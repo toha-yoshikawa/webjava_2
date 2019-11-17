@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Adventure Time</title>
+</head>
+<body>
+<span class="message" th:text="敵を、倒すんだ"></span>
+<form action="#" th:action="@{/BattleView}" th:object="${JobForm}" method="post">
+  <p>職業 : [[${JobForm.job}]]
+  </p>
+  <p>名前 : [[${JobForm.name}]]
+  </p>
+  <p><input type="submit" value="戦う" /></p>
+  <input type="hidden" name="job" th:value="${JobForm.job}" />
+  <input type="hidden" name="name" th:value="${JobForm.name}" />
+  
+</form>
+
+</body>
+</html>
