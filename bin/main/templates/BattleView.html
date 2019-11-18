@@ -8,13 +8,13 @@
 <body>
 <span class="message" th:text="敵を、倒すんだ"></span>
 <form action="#" th:action="@{/BattleView}" th:object="${JobForm}" method="post">
-  <p>職業 : [[${JobForm.job}]]
+  <p>職業 : [[${player.jobName}]]
   </p>
-  <p>名前 : [[${JobForm.name}]]
+  <p>名前 : [[${player.name}]]
   </p>
   <p><input type="submit" value="戦う" /></p>
-  <input type="hidden" name="job" th:value="${JobForm.job}" />
-  <input type="hidden" name="name" th:value="${JobForm.name}" />
+  <input type="hidden" name="job" th:value="${player.jobName}" />
+  <input type="hidden" name="name" th:value="${player.name}" />
   
 </form>
 

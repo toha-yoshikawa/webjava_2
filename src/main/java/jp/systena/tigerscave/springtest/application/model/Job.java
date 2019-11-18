@@ -2,5 +2,9 @@ package jp.systena.tigerscave.springtest.application.model;
 
 public interface Job {
 
-  //public String getName() {};
+  public String attack();
+  public String getName();
+  public void setName(String jobName);
+  public String getJobName();
+  public void setJobName(String jobName);
 }
