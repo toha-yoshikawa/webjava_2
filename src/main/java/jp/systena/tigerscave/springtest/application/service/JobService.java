@@ -2,6 +2,8 @@ package jp.systena.tigerscave.springtest.application.service;
 
 import java.util.Map;
 import java.util.TreeMap;
+
+import jp.systena.tigerscave.springtest.application.model.Fighter;
 import jp.systena.tigerscave.springtest.application.model.Job;
 import jp.systena.tigerscave.springtest.application.model.Knight;
 import jp.systena.tigerscave.springtest.application.model.Wizard;
@@ -14,8 +16,12 @@ public class JobService {
 
   Job knight = new Knight();
   jobList.put(knight.getJobName(),knight);
+  
   Job wizard = new Wizard();
   jobList.put(wizard.getJobName(),wizard);
+
+  Job fighter = new Fighter();
+  jobList.put(fighter.getJobName(),fighter);
 
 
   }
