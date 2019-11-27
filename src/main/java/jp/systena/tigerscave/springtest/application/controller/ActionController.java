@@ -23,6 +23,7 @@ import jp.systena.tigerscave.springtest.application.service.JobService;
     HttpSession session; // セッション管理
 
     JobService service = new JobService();
+    Job player = null;
 
     @RequestMapping(value="/StartView", method = RequestMethod.GET)          // URLとのマッピング
     public ModelAndView Start(ModelAndView mav) {
@@ -44,11 +45,12 @@ import jp.systena.tigerscave.springtest.application.service.JobService;
     public ModelAndView Battle(ModelAndView mav,JobForm form ) {
 
       //if form
-      Job player = null;
+
       Map<String, Job> jobList = service.getJobList();
       for (String key : jobList.keySet()) {
       	if (form.getJob().equals(key)){
       		player = jobList.get(key);
+      		player.setName(form.getName());
       	}
       }
 
@@ -59,16 +61,48 @@ import jp.systena.tigerscave.springtest.application.service.JobService;
 
     }
 
-    @RequestMapping(value="/BattleView", method = RequestMethod.POST)          // URLとのマッピング
+    @RequestMapping(value="/BattleView", params = "attack", method = RequestMethod.POST)          // URLとのマッピング
     public ModelAndView Attack(ModelAndView mav,JobForm form ) {
 
       //if form
-      Job player = (Job)session.getAttribute("player");
+      player = (Job)session.getAttribute("player");
+
       mav.addObject("message", player.attack());
+
+      /*
+      if(answer.equals(form.getAction())) {
+          mav.addObject("message", player.attack());
+
+      }
+      else {
+          mav.addObject("message", player.heal());
+
+      }
+      */
       mav.setViewName("ActionView");
       return mav;
 
     }
 
+    @RequestMapping(value="/BattleView", params = "heal", method = RequestMethod.POST)          // URLとのマッピング
+    public ModelAndView Heal(ModelAndView mav,JobForm form ) {
+
+      //if form
+      player = (Job)session.getAttribute("player");
+      mav.addObject("message", player.heal());
+      /*
+      if(answer.equals(form.getAction())) {
+          mav.addObject("message", player.attack());
+
+      }
+      else {
+          mav.addObject("message", player.heal());
+
+      }
+      */
+      mav.setViewName("ActionView");
+      return mav;
+
+    }
 
 }

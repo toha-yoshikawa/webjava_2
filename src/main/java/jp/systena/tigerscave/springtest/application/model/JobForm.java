@@ -21,5 +21,4 @@ public class JobForm {
     this.job = job;
   }
 
-
 }

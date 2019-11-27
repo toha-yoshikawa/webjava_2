@@ -45,4 +45,11 @@ public class Wizard implements Job {
     return this.name + "は魔法で攻撃した。" ;
 
   }
+
+  @Override
+  public String heal() {
+    return this.name + "は魔法で回復した。" ;
+
+  }
+
 }

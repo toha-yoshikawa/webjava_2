@@ -46,5 +46,10 @@ public class Knight implements Job {
 
   }
 
+  @Override
+  public String heal() {
+    return this.name + "はやくそうで回復した。" ;
+
+  }
 
 }
